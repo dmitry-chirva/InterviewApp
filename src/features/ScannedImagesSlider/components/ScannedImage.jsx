@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from "@emotion/styled";
+import DetectionBoxes from "./DetectionBoxes";
 
 const ImageContainer = styled('div')({
-    width: '100%',
-    maxWidth: '400px',
-    maxHeight: '500px',
+    width: '313px',
+    height: '410px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
@@ -12,9 +12,12 @@ const ImageContainer = styled('div')({
     overflow: 'hidden'
 });
 
-const ScannedImage = ({ imagePath }) => {
+const ScannedImage = ({ imagePath, detections }) => {
     return (
         <ImageContainer>
+            {!!imagePath && (
+                <DetectionBoxes detections={detections}/>
+            )}
             <img src={imagePath} alt="Scanned" />
         </ImageContainer>
     );

@@ -33,6 +33,7 @@ const ScannedImagesSlider = () => {
     }
 
     const currentImageData = images[currentImageIndex];
+    const detectionsList = currentImageData?.detectionsList;
 
     return (
         <Container>
@@ -44,7 +45,7 @@ const ScannedImagesSlider = () => {
                 {isLoading ? (
                     <Loader />
                 ) : (
-                    <ScannedImage imagePath={currentImageData.jpg} />
+                    <ScannedImage imagePath={currentImageData.jpg} detections={detectionsList} />
                 )}
             </SliderPaginationContainer>
             <ScannedImageMetadata metadata={currentImageData}/>
