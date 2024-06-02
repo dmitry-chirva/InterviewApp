@@ -1,9 +1,9 @@
 import ScannedImage from "./ScannedImage";
-import ScannedImageInfo from "./ScannedImageInfo";
+import ScannedImageMetadata from "./ScannedImageMetadata";
 import FilterToggle from "./FilterToggle";
 
 export {
     ScannedImage,
-    ScannedImageInfo,
+    ScannedImageMetadata,
     FilterToggle
 }

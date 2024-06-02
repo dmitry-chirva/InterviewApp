@@ -12,10 +12,10 @@ const ImageContainer = styled('div')({
     overflow: 'hidden'
 });
 
-const ScannedImage = ({ image }) => {
+const ScannedImage = ({ imagePath }) => {
     return (
         <ImageContainer>
-            <img src={image.jpg} alt="Scanned" />
+            <img src={imagePath} alt="Scanned" />
         </ImageContainer>
     );
 };

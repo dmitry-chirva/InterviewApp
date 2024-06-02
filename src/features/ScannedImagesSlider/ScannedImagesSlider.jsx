@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import { Loader, SliderPaginationContainer } from "../../uikit";
 import { useEffectOnce } from "../../shared/hooks";
-import { ScannedImageInfo, FilterToggle } from "./components";
+import { ScannedImageMetadata, FilterToggle } from "./components";
 import useImagesSlider from './hooks/useImagesSlider';
 import ScannedImage from "./components/ScannedImage";
 
@@ -29,7 +29,7 @@ const ScannedImagesSlider = () => {
         return <Container>No images found.</Container>;
     }
 
-    const currentImage = images[currentImageIndex];
+    const currentImageData = images[currentImageIndex];
 
     return (
         <Container>
@@ -41,10 +41,10 @@ const ScannedImagesSlider = () => {
                 {isLoading ? (
                     <Loader />
                 ) : (
-                    <ScannedImage image={currentImage} />
+                    <ScannedImage imagePath={currentImageData.jpg} />
                 )}
             </SliderPaginationContainer>
-            <ScannedImageInfo info={currentImage}/>
+            <ScannedImageMetadata metadata={currentImageData}/>
         </Container>
     );
 };
