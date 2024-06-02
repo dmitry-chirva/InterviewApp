@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from "@emotion/styled";
+import {useSnackbar} from "notistack";
 
 import { Loader, SliderPaginationContainer } from "../../uikit";
 import { useEffectOnce } from "../../shared/hooks";
@@ -15,15 +16,17 @@ const Container = styled('div')({
 
 const ScannedImagesSlider = () => {
     const { images, currentImageIndex, fetchImages, nextImage, prevImage, error, isLoading } = useImagesSlider();
+    const { enqueueSnackbar } = useSnackbar()
 
     useEffectOnce(() => {
         fetchImages();
     })
 
-    if (error) {
-        /*TODO implementation Snackbar instead of raw error info*/
-        return <Container>Error loading images: {error.message}</Container>;
-    }
+    useEffect(() => {
+        if(error) {
+            enqueueSnackbar(error.message, {variant: 'error'})
+        }
+    }, [error]);
 
     if (images.length === 0) {
         return <Container>No images found.</Container>;

@@ -54,7 +54,7 @@ export const ScannedImagesProvider = ({ children }) => {
     return (
         <ScannedImagesContext.Provider
             value={{
-                images: state.images,
+                images: state.images ?? [],
                 currentImageIndex: state.currentImageIndex,
                 filter: state.filter,
                 error: state.error,

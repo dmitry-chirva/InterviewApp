@@ -8,6 +8,7 @@ const eventsApiService = {
             return response?.data?.scanResults ?? [];
         } catch (error) {
             console.error("Error fetching events:", error);
+            throw error;
         }
     }
 };

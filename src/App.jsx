@@ -1,4 +1,5 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {SnackbarProvider} from "notistack";
 import styled from "@emotion/styled";
 
 import NavigationBar from "./layout/NavigationBar";
@@ -27,18 +28,20 @@ const Main = styled('main')({
 function App() {
   return (
       <ScannedImagesProvider>
-          <Router>
-              <Container>
-                  <NavigationBar />
-                  <Main>
-                      <Routes>
-                          <Route exact path="/" element={<Home />} />
-                          <Route path="/account" element={<Account />} />
-                          <Route path="/settings" element={<Settings />} />
-                      </Routes>
-                  </Main>
-              </Container>
-          </Router>
+          <SnackbarProvider maxSnack={3}>
+              <Router>
+                  <Container>
+                      <NavigationBar />
+                      <Main>
+                          <Routes>
+                              <Route exact path="/" element={<Home />} />
+                              <Route path="/account" element={<Account />} />
+                              <Route path="/settings" element={<Settings />} />
+                          </Routes>
+                      </Main>
+                  </Container>
+              </Router>
+          </SnackbarProvider>
       </ScannedImagesProvider>
   );
 }
