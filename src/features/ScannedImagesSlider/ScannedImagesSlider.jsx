@@ -33,7 +33,7 @@ const ScannedImagesSlider = () => {
     }
 
     const currentImageData = images[currentImageIndex];
-    const detectionsList = currentImageData?.detectionsList;
+    const detectionsList = currentImageData?.detectionsList ?? [];
 
     return (
         <Container>

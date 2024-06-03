@@ -1,3 +1,4 @@
 import eventsApiService from './eventsApiService';
+import camerasApiService from './camerasApiService';
 
-export { eventsApiService };
+export { eventsApiService, camerasApiService };

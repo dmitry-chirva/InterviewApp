@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Account from "./pages/Account";
 import Settings from "./pages/Settings"
 
+import { CamerasProvider } from "./shared/contexts/CamerasContext";
 import { ScannedImagesProvider } from "./shared/contexts/ScannedImagesContext";
 
 const Container = styled('div')({
@@ -27,22 +28,24 @@ const Main = styled('main')({
 
 function App() {
   return (
-      <ScannedImagesProvider>
-          <SnackbarProvider maxSnack={3}>
-              <Router>
-                  <Container>
-                      <NavigationBar />
-                      <Main>
-                          <Routes>
-                              <Route exact path="/" element={<Home />} />
-                              <Route path="/account" element={<Account />} />
-                              <Route path="/settings" element={<Settings />} />
-                          </Routes>
-                      </Main>
-                  </Container>
-              </Router>
-          </SnackbarProvider>
-      </ScannedImagesProvider>
+      <CamerasProvider>
+          <ScannedImagesProvider>
+              <SnackbarProvider maxSnack={3}>
+                  <Router>
+                      <Container>
+                          <NavigationBar />
+                          <Main>
+                              <Routes>
+                                  <Route exact path="/" element={<Home />} />
+                                  <Route path="/account" element={<Account />} />
+                                  <Route path="/settings" element={<Settings />} />
+                              </Routes>
+                          </Main>
+                      </Container>
+                  </Router>
+              </SnackbarProvider>
+          </ScannedImagesProvider>
+      </CamerasProvider>
   );
 }
 
