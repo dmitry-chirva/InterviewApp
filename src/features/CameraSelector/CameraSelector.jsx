@@ -40,8 +40,8 @@ const CameraSelector = () => {
         );
     }
 
-    const handleChange = (event, newValue) => {
-        const camera = cameras.find(cam => cam.deviceId === newValue);
+    const handleChange = (event, id) => {
+        const camera = cameras.find(cam => cam.deviceId === id);
         selectCamera(camera);
     };
 
