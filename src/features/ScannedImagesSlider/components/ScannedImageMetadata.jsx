@@ -2,6 +2,7 @@ import React from 'react';
 import styled from "@emotion/styled";
 
 import DetectionList from "./DetectionList";
+import {Tag} from "../../../uikit";
 
 const Container = styled('div')({
     display: 'flex',
@@ -30,7 +31,7 @@ const ScannedImageMetadata = ({ metadata }) => {
         <Container>
             <p>Scan Timestamp: {scanDate}</p>
             <p>Image Metadata: {imageMetadataEl}</p>
-            <p>Number of Detections: {numberOfDetections}</p>
+            <p>Number of Detections: <Tag>{numberOfDetections}</Tag></p>
             {!!numberOfDetections && (
                 <DetectionList detections={detectionsList}/>
             )}

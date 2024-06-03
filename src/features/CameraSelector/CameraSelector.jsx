@@ -3,7 +3,7 @@ import { useSnackbar } from "notistack";
 import styled from '@emotion/styled';
 
 import CamerasContext from '../../shared/contexts/CamerasContext';
-import {Loader, Tabs} from '../../uikit';
+import {Loader, Tabs, Tag} from '../../uikit';
 import {useEffectOnce} from "../../shared/hooks";
 
 const SelectorContainer = styled('div')({
@@ -11,6 +11,11 @@ const SelectorContainer = styled('div')({
     flexDirection: 'column',
     alignItems: 'center',
     margin: '20px 0',
+});
+
+const OnlineTag = styled(Tag)({
+    marginTop: '15px',
+    backgroundColor: '#97d700'
 });
 
 const CameraSelector = () => {
@@ -43,7 +48,14 @@ const CameraSelector = () => {
     const tabs = cameras.map(camera => ({
         label: camera.tags.name,
         value: camera.deviceId,
-        content: `Camera ${camera.tags.name} content`,
+        content: (
+            <>
+                <div>Camera name: {camera.tags.name}</div>
+                {!!camera.connectionState && (
+                    <OnlineTag>online</OnlineTag>
+                )}
+            </>
+        ),
     }));
 
     return (
